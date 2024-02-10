@@ -1,6 +1,6 @@
 # ChainBazaar
 
-Decentralized marketplace with identity solutions
+Decentralized marketplace with KYC solutions, to provide additional layer of security. Built for Kriti 2024
 
 ## Steps to run the  dapp locally
 ```
