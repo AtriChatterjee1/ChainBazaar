@@ -1,0 +1,24 @@
+fp
+const fp = await mkt.feePercent()
+mkt
+const mkt = await ethers.getContractAt("Marketplace", "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9")
+contract
+const contract = await ethers.getContractAt("NFT", "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853")
+const feePercent = await mkt.feePercnt()
+const feePercent = await mkt.feePercent()
+mkt
+const mkt = await ethers.getContractAt("Marketplace", "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9")
+const feePercent = await mkt.feePercent()
+const feeAcc = await mkt.feeAccount()
+mkt
+const fp = mkt.feePercent()
+const feePercent = await mkt.feePercent()
+const mkt = await ethers.getContractAt("Marketplace", "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0")
+feePercent
+const feePercent = await marketplace.feePercent()
+feePercent
+const feePercent = await marketplace.feePercent
+marketplace
+const marketplace = await ethers.getContractAt("Marketplace", "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0")
+exit
+.exit()

@@ -1,0 +1,14 @@
+.main {
+  display: flex;
+
+  flex-direction: row;
+  color: white;
+  padding: 20px;
+}
+.left {
+  width: 20%;
+}
+.right {
+  width: 80%;
+  margin-left: 2rem;
+}

@@ -1,0 +1,308 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+.profile_header{
+  
+    background-color: #0e0d0d;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vh 3vh;
+    
+}
+.profile_left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.profile_header_content{
+    text-align: center;
+    color: #eeeff1;
+    font-weight: 600;
+    font-size: 20px;
+}
+.profile_header_input {
+    
+    box-shadow: none;
+    border: 1px solid #424242;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color:#424242;
+    padding: 10px 20px 10px 40px;
+    color: white;
+  }
+  .profile_header_input:focus{
+outline: none;
+  }
+  .header_login_btn{
+    background-color: #424242;
+    padding: 10px 20px ;
+    font-size: 16px;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid #424242;
+    cursor: pointer;
+  }
+  .profile_main_div{
+    height: max-content;
+    background-color: black;
+    display: flex;
+    padding: 2vh 20vh;
+    justify-content: space-between;
+    font-family: "Montserrat";
+  }
+  .profile_main_left{
+   width: 56%;
+  }
+  .profile_nft_img{
+  height: 80vh;
+  width: 100%;
+  border-radius: 10px;
+  }
+  .profile_desc{
+   background-color: #424242;
+   display: flex;
+   width: 80%;
+   padding: 5px 0;
+   border-radius: 20px;
+   color: #eeeff1;
+   text-align: center;
+   margin: 1vh 0;
+   font-size: 1.25rem;
+   cursor: pointer;
+  }
+  .profile_desc_icon{
+    height: 4vh;
+    width: 4vh;
+    margin: 0 10px;
+    
+  }
+  .profile_trait_header{
+    background-color: #2b2a2a;
+   display: flex;
+   width: 80%;
+   padding: 5px 0;
+   border-radius: 10px;
+   color: #eeeff1;
+   text-align: center;
+   margin-top: 1vh ;
+   font-size: 1.25rem;
+   cursor: pointer;
+  }
+  .profile_trait_container{
+    /* height: 200px; */
+    width: 80%;
+   border-radius: 10px;
+    background-color: #424242;
+  }
+  .profile_trait_container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .profile_trait_container.open {
+    max-height: fit-content; 
+    border-radius: 0px 0px 10px 10px;
+    padding: 5px 0;
+  }
+  .profile_trait_tag{
+    background-color: #d9d9d9;
+    padding: 1vh;
+    font-size: 1rem;
+    width: fit-content;
+    border-radius: 5px;
+    margin: 1vh;
+    line-height: 1.5rem;
+  }
+  .profile_main_right{
+    width: 48%;
+    
+   }
+  .profile_sale_container{
+    height: fit-content;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #1b1b1b;
+    color: white;
+    font-size: 1.2rem;
+    padding: 1.5vh;
+  }
+  .profile_sale_time{
+    margin: 3vh 3vh 0 3vh ;
+    font-size: 1.5rem;
+    text-align: center;
+    
+  }
+.profile_sale_time_div{
+  display: flex;
+  font-weight: 500;
+}
+
+  .profile_buy_sell{
+    height: fit-content;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #1b1b1b;
+    color: white;
+    font-size: 1.2rem;
+    padding: 1.5vh;
+    margin: 1.5vh 0;
+    
+  }
+  .profile_buy_sell_eth{
+    font-size: 2.5rem;
+    
+  }
+  .profile_buy_sell_price{
+    margin-top: 1.5vh ;
+    margin-bottom: 1vh;
+  }
+  .profile_buy_sell_dollar{
+    font-size: 1.5rem;
+    margin: 0 5px;
+  }
+  .profile_buy_btn{
+    padding: 1vh;
+    width: 47%;
+    background-color: #fff1a0;
+    color: black;
+    font-size: 1.5rem;
+    border: 1px solid #fff1a0;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    
+  }
+  .profile_buy_btn:hover{
+    background-color: #ebda7c;
+    
+  }
+  .profile_offer_btn{
+    padding: 1vh;
+    width: 47%;
+    background-color: #0e0d0d;
+    color: #fff1a0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .profile_offer_btn:hover{
+    background-color: #151414  
+    
+  }
+  .profile_buy_sell_line{
+    height: 40px;
+    width: 5px;
+    background-color: #eeeff1;
+    display: inline-block;
+    margin: 0 1vh;
+  }
+  .profile_btn_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .profile_listing_header{
+    background-color: #1a1a1a;
+    display: flex;
+    width: 100%;
+    padding: 1.5vh;
+    border-radius: 10px 10px 0 0;
+   color: #eeeff1;
+   text-align: center;
+   margin-top: 1vh ;
+   font-size: 1.5rem;
+   font-weight: 500;
+   cursor: pointer;
+   position: relative;
+
+  }
+  .listing_icon{
+    height: 4.5vh;
+    width: 4.5vh;
+    margin: 0 10px;
+  }
+  .profile_arrow-up{
+    height: 4.5vh;
+    width: 4.5vh;
+    margin: 0 10px;
+  
+    position: absolute;
+    right: 0;
+  }
+  .profile_listing_container{
+    height: 7px;
+    background-color: #1a1a1a;
+    border-radius: 0px 0px 10px 10px;
+    padding: 0 1.5vh;
+    width: 100%;
+  }
+  .open_listing_container{
+    text-align: center;
+    width: 100%;
+    padding: 4vh 1.5vh;
+    font-size: 2rem;
+    height: 100px;
+    border-radius: 0 0 10px 10px;
+    color: #ebda7c;
+    font-weight: 500;
+    background-color: #1a1a1a;
+  }
+  .profile_nft_img_container{
+    position: relative;
+    width: 80%;
+    
+  }
+  .profile_nft_img_text_1{
+    position: absolute;
+    font-size: 2rem;
+    left: 3vh;
+    bottom: 13vh;
+    font-weight: 600;
+    color: #eeeff1;
+    text-align: center;
+  }
+  .profile_nft_img_text{
+    position: absolute;
+    bottom: 5vh;
+    font-size: 3rem;
+    left: 3vh;
+    font-weight: 600;
+    color: #eeeff1;
+
+  }
+  .profile_nft_img_blur_bottom{
+    position: absolute;
+    bottom: 0.5vh;
+    border-radius: 0 0 10px 10px;
+    height: 30px;
+    width: 100%;
+    backdrop-filter: blur(15px);
+  }
+  .profile_nft_img_blur_top{
+    position: absolute;
+    
+    border-radius: 10px 10px 0px 0px;
+    height: 30px;
+    width: 100%;
+    backdrop-filter: blur(15px);
+  }
+
+  .profile_verified_icon{
+    height: 4.5vh;
+    width: 4.5vh;
+    
+  }

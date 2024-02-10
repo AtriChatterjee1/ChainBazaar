@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,500&display=swap");
+
+/* Menu section */
+.menu2 {
+  background-color: black !important;
+  font-size: larger;
+  /* width: 100vw; */
+  padding: 1rem 1.5rem;
+}
+
+header ul {
+  display: flex;
+  list-style: none;
+}
+
+header ul a {
+  text-decoration: none;
+  height: 30px;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: 800;
+  margin: 1rem;
+  padding: 0.25rem;
+  border-radius: 50px;
+  padding: 10px;
+}
+
+header ul a:hover {
+  color: rgb(0, 0, 0);
+  background-color: #fff1a0;
+}
+onclick .options {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 1rem auto;
+}
+
+.filter1 ul,
+.filter2 ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+.filter1,
+.filter2,
+.filter3,
+.filter4 {
+  background-color: rgb(255, 241, 160);
+  border-radius: 3rem;
+  width: fit-content;
+  padding: 0.39rem;
+}
+
+.options li a,
+.options p {
+  color: #001e52;
+  text-decoration: none;
+  padding: 0.39rem;
+  cursor: pointer;
+  font-weight: 700;
+  margin: 0.39rem;
+}
+
+.options li a:hover {
+  background-color: #001e52;
+  color: #5edff4;
+  border-radius: 1.5rem;
+}
+
+.options li a:active {
+  background-color: #001e52;
+  color: #5edff4;
+  border-radius: 1.5rem;
+}
+
+.filter4 {
+  display: flex;
+  align-items: center;
+}
+
+.lists {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.heading ul {
+  display: flex;
+  align-content: center;
+  /* justify-content: space-around; */
+  list-style: none;
+}
+.heading ul li {
+  color: #787e7e;
+  margin: 1.75rem;
+}
+hr {
+  border: none;
+  height: 1px;
+  background-color: #434444;
+}
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem;
+  color: rgb(255, 241, 160);
+  border-radius: 1rem;
+}
+.list-item img {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 1rem;
+}
+.list-item:hover {
+  box-shadow: 0px 4px 4px 0px rgba(92, 92, 94, 0.25);
+}

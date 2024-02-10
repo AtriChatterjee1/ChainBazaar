@@ -1,0 +1,133 @@
+.container1 {
+  position: relative;
+  height: 55vh;
+  overflow: hidden; /* Ensure the blur overlay doesn't overflow */
+}
+main {
+  width: 100%;
+  height: 100%;
+}
+
+.container1::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  filter: blur(2px);
+  background-image: url("../../assets/Asuki_bg.jpg");
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(10px); /* Apply blur effect to the background */
+  z-index: -1; /* Place the overlay behind other content */
+}
+
+.info_nft {
+  color: white;
+  width: 95%;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-bottom: 24px;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: row;
+  z-index: 1; /* Ensure the content is above the blurred overlay */
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  font-weight: 600;
+}
+.name1 {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.name1 div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.name2 {
+  font-size: 2.5rem;
+}
+.data1 {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: 500;
+}
+.volume {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.volume1 {
+  display: flex;
+  justify-content: center;
+}
+.volume2 {
+  display: flex;
+  justify-content: center;
+}
+.floor1 {
+  display: flex;
+  justify-content: center;
+}
+.floor1 {
+  display: flex;
+  justify-content: center;
+}
+.best1 {
+  display: flex;
+  justify-content: center;
+}
+.best2 {
+  display: flex;
+  justify-content: center;
+}
+.listed1 {
+  display: flex;
+  justify-content: center;
+}
+.listed2 {
+  display: flex;
+  justify-content: center;
+}
+.owner1 {
+  display: flex;
+  justify-content: center;
+}
+.owner2 {
+  display: flex;
+  justify-content: center;
+}
+.floor {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.best {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.listed {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.owner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}

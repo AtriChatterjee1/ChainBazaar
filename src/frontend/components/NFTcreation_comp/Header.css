@@ -1,0 +1,108 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #000;
+  color: #fff;
+  padding: 20px 30px;
+}
+.back-arrow {
+  border: none;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #1a1a1a;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+}
+
+.back-arrow:hover {
+  background-color: #333333;
+}
+
+.back-arrow:active {
+  background-color: #1a1a1a;
+}
+.arr_line {
+  width: 50%;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.heading {
+  margin-top: 10%;
+
+  display: flex;
+  flex-direction: column;
+}
+.main_heading {
+  font-weight: 600;
+  font-size: xxx-large;
+}
+/* .back-arrow button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 24px;
+} */
+.balance_check {
+  font-size: x-large;
+}
+.wallet-info {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+}
+
+.wallet-info .balance {
+  font-size: 16px;
+}
+
+.wallet-indicator-btn {
+  border: none;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #1a1a1a;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+}
+.wallet-indicator-btn:hover {
+  background-color: #333333;
+}
+
+.wallet-indicator-btn:active {
+  background-color: #1a1a1a;
+}
+.wallet-indicator {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #f00;
+}
+.balance button {
+  border-radius: 10px;
+  padding: 5px 10px;
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: #1a1a1a;
+}
+.balance button:hover {
+  background-color: #333333;
+}
+
+.balance button:active {
+  background-color: #1a1a1a;
+}

@@ -1,0 +1,40 @@
+.collection-container {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  background-color: black;
+  /* position: relative; */
+  /* height: 52vh; */
+  width: 100%;
+  /* padding: 0 1rem; */
+  overflow-y: auto;
+  scrollbar-color: blue;
+}
+
+.cc-boxes {
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  /* margin: 0 3vw; */
+  height: 48vh;
+  /* padding: 2vh 0; */
+}
+
+.cc-block {
+  border-radius: 0.98675rem;
+  background: rgba(127, 126, 126, 0.4);
+  height: 35vh;
+  width: 35vh;
+}
+.cc-block img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.cc-block img:hover {
+  transform: scale(1.05);
+}
