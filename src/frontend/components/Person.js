@@ -5,7 +5,8 @@ import nftimg from "../assets/NFT_Profile_Images/nft_img.png";
 import arrowdown from "../assets/NFT_Profile_Images/arrow-down.png";
 import desc_icon from "../assets/NFT_Profile_Images/textalign-left.png";
 import textalign from "../assets/NFT_Profile_Images/textalign-left.png";
-import verified from "../assets/NFT_Profile_Images/verified.png";
+import verified1 from "../assets/NFT_Profile_Images/verified.png";
+import profilepic from "../assets/profilepic.png";
 import { useState, useRef, useEffect } from "react";
 import Files from "./Files";
 import axios from "axios";
@@ -19,6 +20,7 @@ const Person = ({ saveAccount, account, walletaddres }) => {
   const [offerContainerOpen, setOfferContainerOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [purchases, setPurchases] = useState([]);
+  const [verified, setVerified] = useState(false);
   const { wallet } = useContext(WalletContext);
 
   // useEffect(() => {
@@ -78,6 +80,16 @@ const Person = ({ saveAccount, account, walletaddres }) => {
   };
   useEffect(() => {
     loadPurchasedItems();
+    fetch(`http://localhost:3001/check?email=${account}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        if (data == "Verified") {
+          setVerified(true);
+        }
+      });
   }, []);
 
   const toggleTraitContainer = () => {
@@ -113,12 +125,24 @@ const Person = ({ saveAccount, account, walletaddres }) => {
       console.log("User Already Exists");
       return;
     }
-
+    console.log("Account", account);
     const response = await axios.post("http://localhost:3001/hello", { namer });
     if (
       response.data.status == "SUCCESS" &&
       response.data.kycResult.name == name
     ) {
+      const res = await fetch("http://localhost:3001/verify", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: account }),
+      });
+      const res_verify = await res.json();
+      console.log(res_verify);
+      if (res_verify == "Verified") {
+        setVerified(true);
+      }
       IsChecked("Verification Successful");
       try {
         setUploading(true);
@@ -264,10 +288,15 @@ const Person = ({ saveAccount, account, walletaddres }) => {
 
         <div className="Right">
           <div className="info">
-            <div className="per-img"></div>
+            <div className="per-img">
+              <img
+                src={profilepic}
+                style={{ objectFit: "cover", width: "100%", height: "100%" }}
+              />
+            </div>
             <div className="name_profile">
               <h3>Asuki</h3>
-              <img src={verified} alt="" />
+              {verified && <img src={verified1} alt="" />}
             </div>
             <p>{account}</p>
             <p>
@@ -276,29 +305,39 @@ const Person = ({ saveAccount, account, walletaddres }) => {
             <p>Joined on</p>
             <p>2024</p>
             {/* <div className="id">0x3elln8x2c4rxc45</div> */}
-            <button className="verify" onClick={CheckUser}>
-              Verify
-            </button>
+            {verified ? (
+              <>
+                <p className="person_verify_text">Verified</p>
+                <p className="person_verify_text">Uploaded to Ipfs</p>
+              </>
+            ) : (
+              <>
+                <button className="verify" onClick={CheckUser}>
+                  Verify
+                </button>
 
-            <input
-              type="text"
-              id="name"
-              value={namer}
-              onChange={handlename}
-              placeholder="Pan-Number"
-            />
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Name"
-            />
-            <div style={{}}>{Checked}</div>
-            {cid && (
-              <div className="file-list">
-                Uploaded to IPFS
-                {/* <Files cid={cid} /> */}
-              </div>
+                <input
+                  type="text"
+                  id="name"
+                  value={namer}
+                  onChange={handlename}
+                  placeholder="Pan-Number"
+                />
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Name"
+                />
+
+                <div style={{}}>{Checked}</div>
+                {cid && (
+                  <div className="file-list">
+                    Uploaded to IPFS
+                    {/* <Files cid={cid} /> */}
+                  </div>
+                )}
+              </>
             )}
           </div>
 

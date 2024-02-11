@@ -192,3 +192,12 @@
   line-height: 1.5rem;
   font-size: small;
 }
+.person_verify_text {
+  font-size: 1.25rem;
+  margin: 0.5vh 2vh;
+  padding: 0.5vh 2vh;
+
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+}

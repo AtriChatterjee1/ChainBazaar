@@ -18,6 +18,8 @@ const Navbar = ({ saveAccount, account }) => {
   const [searchResults, setResults] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [verified, setVerified] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [items, setItems] = useState([]);
 
   // const Login = async () => {
   //   // console.log("here")
@@ -53,7 +55,53 @@ const Navbar = ({ saveAccount, account }) => {
       await selectAccount();
     }
   };
+  const loadMarketplaceItems = async () => {
+    if (!wallet || !wallet.contractMarketPlace || !wallet.contractNFT) {
+      // If wallet or contracts are not loaded, return early or handle the error as needed
+      console.error("Wallet or contract instances not available");
+      return;
+    }
+    // console.log("start")
+    // Load all  items
+    const itemCount = await wallet.contractMarketPlace.methods
+      .itemCount()
+      .call();
+    console.log(itemCount);
+    let items = [];
+    for (let i = 1; i <= itemCount; i++) {
+      const item = await wallet.contractMarketPlace.methods.items(i).call();
+      // console.log(item)
+      if (!item.sold) {
+        // get uri url from nft contract
+        const uri = await wallet.contractNFT.methods
+          .tokenURI(item.tokenId)
+          .call();
+        // console.log(uri)
+        // use uri to fetch the nft metadata stored on ipfs
+        const response = await fetch(uri);
+        const metadata = await response.json();
+        // // get total price of item (item price + fee)
+        const totalPrice = await wallet.contractMarketPlace.methods
+          .getTotalPrice(item.itemId)
+          .call();
 
+        // Add item to items array
+        items.push({
+          totalPrice,
+          itemId: item.itemId,
+          seller: item.seller,
+          name: metadata.name,
+          description: metadata.description,
+          image: metadata.image,
+          id: i,
+        });
+
+        // console.log(items)
+      }
+    }
+    setLoading(false);
+    setItems(items);
+  };
   useEffect(() => {
     const allAccounts = async () => {
       var select = document.getElementById("selectNumber");
@@ -88,6 +136,7 @@ const Navbar = ({ saveAccount, account }) => {
       }
     };
     wallet.web3 && allAccounts();
+    loadMarketplaceItems();
   }, [wallet.web3]);
   console.log(account);
   const selectAccount = async () => {
@@ -159,8 +208,23 @@ const Navbar = ({ saveAccount, account }) => {
       {searchResults ? (
         <div id="searchResults">
           <div id="collections">
-            Collections
-            <div>
+            NFT MarketPlace
+            {items.map((item, idx) => (
+              <NavLink
+                to={{
+                  // next task here to send this item as props as here we have loaded everything other was pass URI to know more about that item
+                  pathname: `/profile/${item.id}`,
+                }}>
+                <div id="s-collection">
+                  <img src={item.image} alt="" />
+                  <div id="s-description">
+                    <p>{item.name}</p>
+                    <p>1 item</p>
+                  </div>
+                </div>
+              </NavLink>
+            ))}
+            {/* <div>
               <Link to="/about">
                 <div id="s-collection">
                   <img src={nft1} alt="" />
@@ -192,7 +256,7 @@ const Navbar = ({ saveAccount, account }) => {
                   </div>
                 </div>
               </Link>
-            </div>
+            </div> */}
           </div>
           <div id="collections">
             Accounts
@@ -201,8 +265,8 @@ const Navbar = ({ saveAccount, account }) => {
                 <div id="s-collection">
                   <img src={nft1} alt="" />
                   <div id="s-description">
-                    <p>Asuki</p>
-                    <p>1,000 items</p>
+                    <p>Account 1</p>
+                    <p>User 1</p>
                   </div>
                 </div>
               </Link>
@@ -212,8 +276,8 @@ const Navbar = ({ saveAccount, account }) => {
                 <div id="s-collection">
                   <img src={nft1} alt="" />
                   <div id="s-description">
-                    <p>Asuki</p>
-                    <p>1,000 items</p>
+                    <p>Account 2</p>
+                    <p>User 2</p>
                   </div>
                 </div>
               </Link>
@@ -223,8 +287,8 @@ const Navbar = ({ saveAccount, account }) => {
                 <div id="s-collection">
                   <img src={nft1} alt="" />
                   <div id="s-description">
-                    <p>Asuki</p>
-                    <p>1,000 items</p>
+                    <p>Account 3</p>
+                    <p>User 3</p>
                   </div>
                 </div>
               </Link>

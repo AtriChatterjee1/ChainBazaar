@@ -130,7 +130,21 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
+.nftform_nftloader_div {
+  width: 100%;
+  margin: 4vh;
+  padding: 2vh;
+}
+.nftloader_gif {
+  display: block;
+  margin: 1vh auto;
+  transform: scale(1.25);
+}
+.nftloader_text {
+  font-size: 1.75rem;
+  color: #fff1a0;
+  text-align: center;
+}
 /* input[type="number"] {
   -moz-appearance: textfield;
 } */

@@ -128,9 +128,9 @@ input::placeholder {
 
 #searchResults {
   background-color: black;
-  position: fixed;
+  position: absolute;
   top: 5rem;
-  left: 34vw;
+  left: 23vw;
   display: flex;
   flex-direction: column;
 

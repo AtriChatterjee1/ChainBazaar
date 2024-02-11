@@ -18,6 +18,7 @@ import nft9 from "../assets/9.jpg";
 import nft10 from "../assets/10.png";
 import nft11 from "../assets/11.jpg";
 import nft12 from "../assets/12.jpg";
+import loader from "../assets/loadernew.gif";
 
 // function renderSoldItems(items) {
 //   return (
@@ -112,7 +113,11 @@ const Hero = ({ account }) => {
       <div className="boxes">
         <div className="hero">
           {wallet && (
-            <p style={{ color: "white" }}>
+            <p style={{ color: "white", fontSize: "1.25rem" }}>
+              <img
+                src={loader}
+                style={{ display: "block", margin: "1vh auto" }}
+              />
               Make sure you have connected your wallet
             </p>
           )}

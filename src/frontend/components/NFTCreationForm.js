@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./NFTCreationForm.css"; // Make sure to create a CSS file with this name
 import Header from "./NFTcreation_comp/Header";
 import { useContext } from "react";
 import { WalletContext } from "./Wallet";
 import axios from "axios";
+import NFTloader from "../assets/MIntNFT.gif";
 import { ethers } from "ethers";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const NFTCreationForm = ({ saveAccount, account }) => {
   const { wallet, setWallet } = useContext(WalletContext);
@@ -13,7 +17,9 @@ const NFTCreationForm = ({ saveAccount, account }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [balance, setBalance] = useState(0);
+  const [loading, setLoading] = useState(false);
 
+  const navigate = useNavigate();
   // Function to fetch balance
   async function fetchBalance(address) {
     try {
@@ -75,6 +81,7 @@ const NFTCreationForm = ({ saveAccount, account }) => {
     }
   };
   const createNFT = async () => {
+    setLoading(true);
     console.log(image, price, name, description);
     if (!image || !price || !name || !description) return;
     try {
@@ -141,6 +148,9 @@ const NFTCreationForm = ({ saveAccount, account }) => {
         });
 
       console.log("completed");
+      setLoading(false);
+      toast.success("NFT Minted Successfully");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -173,85 +183,96 @@ const NFTCreationForm = ({ saveAccount, account }) => {
           <Header balanceWallet={balance} />
         </div>
         <div className="nft-creation-form">
-          <form onSubmit={handleSubmit}>
-            {image == "" ? (
-              <div className="media-drop-area">
-                <input type="file" onChange={handleFileChange} />
-                <p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24">
-                    <path
-                      d="M10 9h-6l8-9 8 9h-6v11h-4v-11zm11 11v2h-18v-2h-2v4h22v-4h-2z"
-                      fill="white"
-                    />
-                  </svg>
-                </p>
-                <p>Drag and drop media</p>
-                <p>Browse files</p>
-                <p>Max size: 50MB</p>
-                <p>JPG, PNG, GIF, SVG, MP4</p>
-              </div>
-            ) : (
-              <div className="media-drop-area">
-                <img
-                  src={image}
-                  alt="uploaded nft"
-                  style={{
-                    objectFit: "cover",
-                    height: "100%",
-                    width: "100%",
-                  }}
-                />
-              </div>
-            )}
-            <div>
-              {/* <div className="formfill">
+          {!loading ? (
+            <form onSubmit={handleSubmit}>
+              {image == "" ? (
+                <div className="media-drop-area">
+                  <input type="file" onChange={handleFileChange} />
+                  <p>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24">
+                      <path
+                        d="M10 9h-6l8-9 8 9h-6v11h-4v-11zm11 11v2h-18v-2h-2v4h22v-4h-2z"
+                        fill="white"
+                      />
+                    </svg>
+                  </p>
+                  <p>Drag and drop media</p>
+                  <p>Browse files</p>
+                  <p>Max size: 50MB</p>
+                  <p>JPG, PNG, GIF, SVG, MP4</p>
+                </div>
+              ) : (
+                <div className="media-drop-area">
+                  <img
+                    src={image}
+                    alt="uploaded nft"
+                    style={{
+                      objectFit: "cover",
+                      height: "100%",
+                      width: "100%",
+                    }}
+                  />
+                </div>
+              )}
+              <div>
+                {/* <div className="formfill">
         <label for="nameImput">Collection *</label>
         <button onClick={() => {}} className="newcollection">
           Create a new collection
         </button>
       </div> */}
-              <div>
-                <label for="nameImput">Name *</label>
-                <input
-                  className="nft-info"
-                  type="text"
-                  value={name}
-                  onChange={handleNameChange}
-                  placeholder="Name your NFT"
-                  required
-                />
+                <div>
+                  <label for="nameImput">Name *</label>
+                  <input
+                    className="nft-info"
+                    type="text"
+                    value={name}
+                    onChange={handleNameChange}
+                    placeholder="Name your NFT"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="nameImput">Price *</label>
+                  <input
+                    className="nft-info"
+                    type="number"
+                    placeholder="Price in ETH"
+                    onChange={handlePriceChange}
+                    min={1}
+                    // Additional logic would be needed to handle changing supply values
+                  />
+                </div>
+                <div>
+                  <label for="nameImput">Description *</label>
+                  <textarea
+                    className="nft-info"
+                    value={description}
+                    onChange={handleDescriptionChange}
+                    placeholder="Enter a description"
+                  />
+                </div>
+                <div>
+                  <button onClick={createNFT} className="submit">
+                    Create & List NFT
+                  </button>
+                </div>
               </div>
-              <div>
-                <label for="nameImput">Price *</label>
-                <input
-                  className="nft-info"
-                  type="number"
-                  placeholder="Price in ETH"
-                  onChange={handlePriceChange}
-                  min={1}
-                  // Additional logic would be needed to handle changing supply values
-                />
+            </form>
+          ) : (
+            <>
+              <div className="nftform_nftloader_div">
+                <img src={NFTloader} className="nftloader_gif" />
+                <p className="nftloader_text">
+                  Loading Creativity: Minting Moments into NFTs....
+                </p>
               </div>
-              <div>
-                <label for="nameImput">Description *</label>
-                <textarea
-                  className="nft-info"
-                  value={description}
-                  onChange={handleDescriptionChange}
-                  placeholder="Enter a description"
-                />
-              </div>
-              <div>
-                <button onClick={createNFT} className="submit">
-                  Create & List NFT
-                </button>
-              </div>
-            </div>
-          </form>
+            </>
+          )}
         </div>
       </div>
     </>

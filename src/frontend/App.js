@@ -12,6 +12,8 @@ import Create from "./components/Create";
 import Profile from "./components/Profile";
 import NFTCreationForm from "./components/NFTCreationForm";
 import Person from "./components/Person";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // eslint-disable-next-line
 
 function App() {
@@ -50,6 +52,18 @@ function App() {
           />
         </Routes>
       </Router>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </Wallet>
   );
 }

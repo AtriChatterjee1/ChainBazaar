@@ -1,5 +1,5 @@
 const express = require("express");
-const dotenv = require("dotenv");
+// const dotenv = require("dotenv");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -91,7 +91,7 @@ app.listen(PORT, () => {
 });
 
 app.post("/addtolist", async (req, res) => {
-  console.log("req received");
+  // console.log("req received");
   await client
     .connect()
     .then(async () => {
@@ -113,6 +113,67 @@ app.post("/addtolist", async (req, res) => {
 
       client.close();
       return res.status(201).send({ message: "YES" });
+    })
+    .catch((err) => {
+      console.log(err);
+      client.close();
+      return res.status(500).send({ message: err.message });
+    });
+});
+
+app.post("/verify", async (req, res) => {
+  console.log("req received");
+  await client
+    .connect()
+    .then(async () => {
+      // console.log("Connected successfully to server");
+      // console.log("I am here registering");
+      const database = client.db("app-data");
+      const users = database.collection("emaillists");
+      // console.log(req.body);
+      const { email } = req.body;
+      console.log(email);
+      const checkUser = await users.findOne({ email: email });
+      // console.log(checkUser);
+      if (!checkUser) {
+        await users.insertOne({
+          email: email,
+        });
+        console.log("new account verified");
+      }
+
+      console.log("KYC Success email stored");
+
+      client.close();
+      return res.json("Verified");
+    })
+    .catch((err) => {
+      console.log(err);
+      client.close();
+      return res.status(500).send({ message: err.message });
+    });
+});
+
+app.get("/check", async (req, res) => {
+  console.log("req received");
+  await client
+    .connect()
+    .then(async () => {
+      // console.log("Connected successfully to server");
+      // console.log("I am here registering");
+      const database = client.db("app-data");
+      const users = database.collection("emaillists");
+      // console.log(req.body);
+      const { email } = req.query;
+      console.log(email);
+      const checkUser = await users.findOne({ email: email });
+      // console.log(checkUser);
+      if (!checkUser) {
+        return res.json("Not Verified");
+      }
+      console.log("sab badhiya hai");
+      client.close();
+      return res.json("Verified");
     })
     .catch((err) => {
       console.log(err);
