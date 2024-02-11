@@ -11,24 +11,24 @@ const client = new MongoClient(url);
 app.use(cors());
 app.use(bodyParser.json());
 app.post("/hello", (req, res) => {
-  data = {
-    kycStatus: "SUCCESS",
-    status: "SUCCESS",
-    message: "PAN details retrived successfully.",
-    kycResult: {
-      idNumber: "CVJPC1693P",
-      idStatus: "VALID",
-      category: "INDIVIDUAL OR PERSON",
-      name: "ATRI CHATTOPADHYAY",
-    },
-    responseKey: "success_pan",
-    responseCode: "S00000",
-    requestTimestamp: "2024-02-06 16:59:37.037555 IST (GMT +0530)",
-    responseTimestamp: "2024-02-06 16:59:37.237867 IST (GMT +0530)",
-    decentroTxnId: "46A547A82941486EA6B55E0313839D7E",
-  };
+  // data = {
+  //   kycStatus: "SUCCESS",
+  //   status: "SUCCESS",
+  //   message: "PAN details retrived successfully.",
+  //   kycResult: {
+  //     idNumber: "CVJPC1693P",
+  //     idStatus: "VALID",
+  //     category: "INDIVIDUAL OR PERSON",
+  //     name: "ATRI CHATTOPADHYAY",
+  //   },
+  //   responseKey: "success_pan",
+  //   responseCode: "S00000",
+  //   requestTimestamp: "2024-02-06 16:59:37.037555 IST (GMT +0530)",
+  //   responseTimestamp: "2024-02-06 16:59:37.237867 IST (GMT +0530)",
+  //   decentroTxnId: "46A547A82941486EA6B55E0313839D7E",
+  // };
 
-  res.json(data);
+  // res.json(data);
   const axios = require("axios");
   const { namer, name, a } = req.body;
   const options = {
@@ -36,9 +36,9 @@ app.post("/hello", (req, res) => {
     url: "https://in.staging.decentro.tech/kyc/public_registry/validate",
     headers: {
       accept: "application/json",
-      client_id: "Kriti_3_sop",
-      client_secret: "1b921c88671d457181b8caea93958858",
-      module_secret: "90b383a19539427c8f3f77a35b38cb46",
+      client_id: "Metaskyabc_2_sop",
+      client_secret: "e495ae49de234152aa7ad4dccb5728ac",
+      module_secret: "1ef725d3f5584c3a8b1af07c037196f1",
       "content-type": "application/json",
     },
     data: {
@@ -50,28 +50,28 @@ app.post("/hello", (req, res) => {
     },
   };
 
-  // axios
-  //   .request(options)
-  //   .then(async function (response) {
-  //     // console.log("new req received");
-  //     data = response.data;
-  //     // if (data.kycStatus == "SUCCESS") {
-  //     //   await client.connect().then(async () => {
-  //     //     console.log("Connected successfully to server");
-  //     //     console.log("I am here registering");
-  //     //     const database = client.db("app-data");
-  //     //     const users = database.collection("emaillists");
-  //     //     await users.insertOne({
-  //     //       email: email,
-  //     //     });
-  //     //   });
-  //     // }
-  //     res.json(data);
-  //     console.log(response.data);
-  //   })
-  //   .catch(function (error) {
-  //     console.error(error);
-  //   });
+  axios
+    .request(options)
+    .then(async function (response) {
+      // console.log("new req received");
+     data = response.data;
+      // if (data.kycStatus == "SUCCESS") {
+      //   await client.connect().then(async () => {
+      //     console.log("Connected successfully to server");
+      //     console.log("I am here registering");
+      //     const database = client.db("app-data");
+      //     const users = database.collection("emaillists");
+      //     await users.insertOne({
+      //       email: email,
+      //     });
+      //   });
+      // }
+      res.json(data);
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
 });
 
 // const connectionParams = {
